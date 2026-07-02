@@ -108,10 +108,8 @@
     
     <div class="instruction">
         <ol>
-            <li>静かな環境と，ヘッドホンもしくはイヤホンをご用意ください</li>
-            <li>基本音声を再生し，音量を調節してください．以降，音量は変化させないでください．</li>
-            <li>音声サンプル No.1 〜 No.20を再生して，明瞭性・話者類似性について，評価をお願いいたします．</li>
-            <li></li>
+            <li>google form の指示に従って，以下の音声を再生してください．</li>
+            <li>はじめに設定した音量（ボリューム）は，form解答中に変更しないでください。</li>
         </ol>
     </div>
     
@@ -122,7 +120,7 @@
 
     <div class="audio-item">
         <div class="audio-label">音声サンプル No.1</div>
-        <audio controls src="synthe/VCTK001_p1_TE0.1_DP0.6_FL0.8_DE0.6.wav" controlsList="nodownload"></audio>
+        <audio controls src="exp1_VCTK014/TE0.1_DP0.5_FL0.7_DE0.6.wav" controlsList="nodownload"></audio>
         
         <div class="eval-container">
             <div class="eval-group">
@@ -397,7 +395,7 @@
     </div>
 
 </div>
-<div style="text-align: center; margin-top: 30px;">
+    <div style="text-align: center; margin-top: 30px;">
     <button id="downloadBtn" style="padding: 12px 30px; font-size: 16px; background-color: #2ecc71; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
         評価結果をCSVとしてダウンロード
     </button>
@@ -434,5 +432,6 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
     document.body.removeChild(link);
 });
 </script>
+
 </body>
 </html>
