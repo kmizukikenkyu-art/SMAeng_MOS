@@ -123,7 +123,7 @@
 
     <div class="audio-item">
         <div class="audio-label">音声サンプル No.1</div>
-        <audio controls src="synthe/VCTK001_p2_TE0.1_DP0.6_FL0.8_DE0.6.wav" controlsList="nodownload"></audio>
+        <audio controls src="synthe/VCTK001_p1_TE0.1_DP0.6_FL0.8_DE0.6.wav" controlsList="nodownload"></audio>
         
         <div class="eval-container">
             <div class="eval-group">
@@ -151,7 +151,7 @@
 
     <div class="audio-item">
         <div class="audio-label">音声サンプル No.2</div>
-        <audio controls src="synthe/VCTK001_p2_TE0.1_DP0.5_FL0.7_DE0.6.wav" controlsList="nodownload"></audio>
+        <audio controls src="synthe/VCTK002_p2_TE0.1_DP0.5_FL0.7_DE0.6.wav" controlsList="nodownload"></audio>
         <div class="eval-container">
             <div class="eval-group">
                 <div class="eval-title">明瞭性：</div>
@@ -678,7 +678,7 @@ document.getElementById('downloadBtn').addEventListener('click', function() {
     let csvContent = "音声No,明瞭性,話者類似性\n";
     
     // No.1 から No.10 までループして選択された値を取得
-    for (let i = 1; i <= 10; i++) {
+    for (let i = 1; i <= 20; i++) {
         let clarity = document.querySelector(`input[name="clarity_no${i}"]:checked`);
         let similarity = document.querySelector(`input[name="similarity_no${i}"]:checked`);
         
