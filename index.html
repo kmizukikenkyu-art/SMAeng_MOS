@@ -108,8 +108,10 @@
     
     <div class="instruction">
         <ol>
-            <li>google form の指示に従って，以下の音声を再生してください．</li>
-            <li>はじめに設定した音量（ボリューム）は，form解答中に変更しないでください。</li>
+            <li>静かな環境と，ヘッドホンもしくはイヤホンをご用意ください</li>
+            <li>基本音声を再生し，音量を調節してください．以降，音量は変化させないでください．</li>
+            <li>音声サンプル No.1 〜 No.20を再生して，明瞭性・話者類似性について，評価をお願いいたします．</li>
+            <li></li>
         </ol>
     </div>
     
@@ -120,7 +122,7 @@
 
     <div class="audio-item">
         <div class="audio-label">音声サンプル No.1</div>
-        <audio controls src="exp1_VCTK014/TE0.1_DP0.5_FL0.7_DE0.6.wav" controlsList="nodownload"></audio>
+        <audio controls src="synthe/VCTK001_p1_TE0.1_DP0.6_FL0.8_DE0.6.wav" controlsList="nodownload"></audio>
         
         <div class="eval-container">
             <div class="eval-group">
@@ -395,6 +397,42 @@
     </div>
 
 </div>
+<div style="text-align: center; margin-top: 30px;">
+    <button id="downloadBtn" style="padding: 12px 30px; font-size: 16px; background-color: #2ecc71; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
+        評価結果をCSVとしてダウンロード
+    </button>
+</div>
 
+<script>
+document.getElementById('downloadBtn').addEventListener('click', function() {
+    // 全データ（ヘッダー行）
+    let csvContent = "音声No,明瞭性,話者類似性\n";
+    
+    // No.1 から No.10 までループして選択された値を取得
+    for (let i = 1; i <= 10; i++) {
+        let clarity = document.querySelector(`input[name="clarity_no${i}"]:checked`);
+        let similarity = document.querySelector(`input[name="similarity_no${i}"]:checked`);
+        
+        // 未選択の場合は「未回答」とする
+        let c_val = clarity ? clarity.value : "未回答";
+        let s_val = similarity ? similarity.value : "未回答";
+        
+        csvContent += `No.${i},${c_val},${s_val}\n`;
+    }
+    
+    // Shift-JIS（Excelの文字化け対策）ではなく、UTF-8（BOM付き）で出力
+    const bom = new Uint8Array([0xEF, 0xBB, 0xBF]);
+    const blob = new Blob([bom, csvContent], { type: "text/csv;charset=utf-8;" });
+    
+    // ダウンロード処理
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = "mos_evaluation_results.csv";
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+});
+</script>
 </body>
 </html>
